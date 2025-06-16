@@ -1469,7 +1469,7 @@ static QString modelsJsonFilename()
 static std::optional<QFile> modelsJsonCacheFile()
 {
     QString modelsJsonFname = modelsJsonFilename();
-    QString path = QCoreApplication::applicationDirPath() + "/../data/" + modelsJsonFname;
+    QString path = QFileInfo(QSettings().fileName()).dir().absolutePath() + "/" + modelsJsonFname;
     return std::make_optional<QFile>(path);
 }
 
