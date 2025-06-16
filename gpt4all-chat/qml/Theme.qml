@@ -12,7 +12,7 @@ QtObject {
     // dark mode black and white
     property color darkwhite: Qt.hsla(0, 0, 0.85)
 
-    // gray // FIXME: These are slightly less red than what atlas uses. should resolve diff
+    // gray
     property color gray0: white
     property color gray50: Qt.hsla(25/360, 0.05, 0.97)
     property color gray100: Qt.hsla(25/360,0.05, 0.95)
@@ -26,6 +26,20 @@ QtObject {
     property color gray900: Qt.hsla(25/360, 0.05, 0.31)
     property color gray950: Qt.hsla(25/360, 0.05, 0.15)
 
+    // grayRed
+    property color grayRed50: Qt.hsla(0, 0.40, 0.97)
+    property color grayRed100: Qt.hsla(0, 0.40, 0.94)
+    property color grayRed200: Qt.hsla(0, 0.40, 0.89)
+    property color grayRed300: Qt.hsla(0, 0.40, 0.77)
+    property color grayRed400: Qt.hsla(0, 0.40, 0.71)
+    property color grayRed500: Qt.hsla(0, 0.40, 0.60)
+    property color grayRed600: Qt.hsla(0, 0.40, 0.51)
+    property color grayRed700: Qt.hsla(0, 0.40, 0.42)
+    property color grayRed800: Qt.hsla(0, 0.40, 0.35)
+    property color grayRed900: Qt.hsla(0, 0.40, 0.31)
+    property color grayRed950: Qt.hsla(0, 0.40, 0.15)
+
+    /* grayRed (GPT4All)
     property color grayRed0: Qt.hsla(0/360, 0.108, 0.89)
     property color grayRed50: Qt.hsla(0/360, 0.108, 0.85)
     property color grayRed100: Qt.hsla(0/360, 0.108, 0.80)
@@ -37,6 +51,7 @@ QtObject {
     property color grayRed700: Qt.hsla(0/360, 0.108, 0.52)
     property color grayRed800: Qt.hsla(0/360, 0.108, 0.48)
     property color grayRed900: Qt.hsla(0/360, 0.108, 0.42)
+    */
 
     // darkmode
     property color darkgray0: Qt.hsla(25/360, 0.05, 0.23)
@@ -68,6 +83,22 @@ QtObject {
     property color green400_sat: Qt.hsla(122/360, 0.23, 0.58)
     property color green450_sat: Qt.hsla(122/360, 0.23, 0.52)
 
+    // blue
+    property color blue50: Qt.hsla(220/360, 0.18, 0.97)
+    property color blue100: Qt.hsla(220/360, 0.21, 0.93)
+    property color blue200: Qt.hsla(220/360, 0.21, 0.85)
+    property color blue300: Qt.hsla(220/360, 0.20, 0.73)
+    property color blue400: Qt.hsla(220/360, 0.19, 0.58)
+    property color blue500: Qt.hsla(220/360, 0.19, 0.45)
+    property color blue600: Qt.hsla(220/360, 0.20, 0.33)
+    property color blue700: Qt.hsla(220/360, 0.19, 0.29)
+    property color blue800: Qt.hsla(220/360, 0.17, 0.24)
+    property color blue900: Qt.hsla(220/360, 0.17, 0.20)
+    property color blue950: Qt.hsla(220/360, 0.22, 0.10)
+    property color blue300_sat: Qt.hsla(220/360, 0.24, 0.73)
+    property color blue400_sat: Qt.hsla(220/360, 0.23, 0.58)
+    property color blue450_sat: Qt.hsla(220/360, 0.23, 0.52)
+
     // yellow
     property color yellow0: Qt.hsla(47/360, 0.90, 0.99)
     property color yellow25: Qt.hsla(47/360, 0.90, 0.98)
@@ -96,7 +127,7 @@ QtObject {
     property color red900: Qt.hsla(0, 0.56, 0.31)
     property color red950: Qt.hsla(0, 0.67, 0.15)
 
-    // purple // FIXME: These are slightly more uniform than what atlas uses. should resolve diff
+    // purple
     property color purple50: Qt.hsla(279/360, 1.0, 0.98)
     property color purple100: Qt.hsla(279/360, 1.0, 0.95)
     property color purple200: Qt.hsla(279/360, 1.0, 0.91)
@@ -110,6 +141,7 @@ QtObject {
     property color purple900: Qt.hsla(279/360, 1.0, 0.32)
     property color purple950: Qt.hsla(279/360, 1.0, 0.22)
 
+    /* Used for darkmode I think, will implement darkmode later
     property color blue0: "#d0d5db"
     property color blue100: "#8e8ea0"
     property color blue200: "#7d7d8e"
@@ -121,6 +153,7 @@ QtObject {
     property color blue900: "#222527"
     property color blue950: "#1c1f21"
     property color blue1000: "#0e1011"
+    */
 
     property color accentColor: {
         switch (MySettings.chatTheme) {
@@ -210,7 +243,8 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return darkgray200
             default:
-                return grayRed0
+                return grayRed50
+                // return grayRed0
         }
     }
 
@@ -1093,7 +1127,8 @@ QtObject {
     property color sendGlow: {
         switch (MySettings.chatTheme) {
             case MySettingsEnums.ChatTheme.LegacyDark:
-                return blue1000
+                return blue950
+                // return blue1000
             case MySettingsEnums.ChatTheme.Dark:
                 return green950
             default:
