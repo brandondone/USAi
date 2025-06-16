@@ -21,7 +21,7 @@ Window {
     minimumWidth: 658 + 470 * theme.fontScale
     minimumHeight: 384 + 160 * theme.fontScale
     visible: true
-    title: qsTr("GPT4All v%1").arg(Qt.application.version)
+    title: qsTr("USAi v%1").arg(Qt.application.version)
 
     SystemTrayIcon {
         id: systemTrayIcon
@@ -334,6 +334,7 @@ Window {
 
             MyToolButton {
                 id: modelsButton
+                visible: false
                 backgroundColor: toggled ? theme.iconBackgroundViewBarHovered : theme.iconBackgroundViewBar
                 backgroundColorHovered: theme.iconBackgroundViewBarHovered
                 Layout.preferredWidth: 38 * theme.fontScale
@@ -352,6 +353,7 @@ Window {
             }
 
             Text {
+                visible: false
                 Layout.topMargin: -20
                 text: qsTr("Models")
                 font.pixelSize: theme.fontSizeMedium

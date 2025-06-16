@@ -80,7 +80,7 @@ GridLayout {
             TextArea {
                 text: {
                     if (name === "Response: ")
-                        return qsTr("GPT4All");
+                        return qsTr("USAi");
                     return qsTr("You");
                 }
                 padding: 0
@@ -92,7 +92,7 @@ GridLayout {
                 readOnly: true
             }
             Text {
-                visible: name === "Response: "
+                visible: false
                 font.pixelSize: theme.fontSizeLarger
                 text: currentModelName()
                 color: theme.mutedTextColor

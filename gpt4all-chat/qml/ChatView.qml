@@ -33,10 +33,23 @@ Rectangle {
     signal addCollectionViewRequested()
     signal addModelViewRequested()
 
-    color: theme.viewBackground
+    Component.onCompleted: {
+        if (currentChat && !currentChat.isModelLoaded && ModelList.selectableModels.count > 0) {
+            const defaultModel = ModelList.defaultModelInfo()
+            if (defaultModel) {
+                currentChat.modelInfo = defaultModel
+                currentChat.reloadModel()
+            }
+        }
+    }
 
     Connections {
         target: currentChat
+        function onModelInfoChanged() {
+            if (currentChat && !currentChat.isModelLoaded && ModelList.selectableModels.count > 0) {
+                currentChat.reloadModel()
+            }
+        }
         // FIXME: https://github.com/nomic-ai/gpt4all/issues/3334
         // function onResponseInProgressChanged() {
         //    if (MySettings.networkIsActive && !currentChat.responseInProgress)
@@ -52,12 +65,14 @@ Rectangle {
     }
 
     function currentModelName() {
-        return ModelList.modelInfo(currentChat.modelInfo.id).name;
+        return "USAi";
     }
 
     function currentModelInstalled() {
         return currentModelName() !== "" && ModelList.modelInfo(currentChat.modelInfo.id).installed;
     }
+
+    color: theme.viewBackground
 
     PopupDialog {
         id: modelLoadingErrorPopup
@@ -255,17 +270,12 @@ Rectangle {
 
                 ComboBox {
                     id: comboBox
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.fillHeight: true
-                    Layout.preferredWidth: 550
-                    Layout.leftMargin: {
-                        // This function works in tandem with the preferredWidth and the layout to
-                        // provide the maximum size combobox we can have at the smallest window width
-                        // we allow with the largest font size we allow. It is unfortunately based
-                        // upon a magic number that was produced through trial and error for something
-                        // I don't fully understand.
-                        return -Math.max(0, comboBox.width / 2 + collectionsButton.width + 110 /*magic*/ - comboLayout.width / 2);
-                    }
+                    visible: false
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.leftMargin: 30
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: 80
+                    Layout.maximumWidth: 550
                     enabled: !currentChat.isServer
                         && !currentChat.trySwitchContextInProgress
                         && !currentChat.isCurrentlyLoading
@@ -339,12 +349,8 @@ Rectangle {
 
                                 MyMiniButton {
                                     id: reloadButton
+                                    visible: false
                                     Layout.alignment: Qt.AlignCenter
-                                    visible: currentChat.modelLoadingError === ""
-                                        && !currentChat.trySwitchContextInProgress
-                                        && !currentChat.isCurrentlyLoading
-                                        && (currentChat.isModelLoaded || currentModelInstalled())
-                                    source: "qrc:/gpt4all/icons/regenerate.svg"
                                     backgroundColor: theme.textColor
                                     backgroundColorHovered: theme.styledTextColor
                                     onClicked: {
@@ -359,9 +365,8 @@ Rectangle {
 
                                 MyMiniButton {
                                     id: ejectButton
+                                    visible: false
                                     Layout.alignment: Qt.AlignCenter
-                                    visible: currentChat.isModelLoaded && !currentChat.isCurrentlyLoading
-                                    source: "qrc:/gpt4all/icons/eject.svg"
                                     backgroundColor: theme.textColor
                                     backgroundColorHovered: theme.styledTextColor
                                     onClicked: {
