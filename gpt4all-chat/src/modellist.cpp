@@ -1468,13 +1468,9 @@ static QString modelsJsonFilename()
 
 static std::optional<QFile> modelsJsonCacheFile()
 {
-    constexpr auto loc = QStandardPaths::CacheLocation;
     QString modelsJsonFname = modelsJsonFilename();
-    if (auto path = QStandardPaths::locate(loc, modelsJsonFname); !path.isEmpty())
-        return std::make_optional<QFile>(path);
-    if (auto path = QStandardPaths::writableLocation(loc); !path.isEmpty())
-        return std::make_optional<QFile>(u"%1/%2"_s.arg(path, modelsJsonFname));
-    return std::nullopt;
+    QString path = QCoreApplication::applicationDirPath() + "/../data/" + modelsJsonFname;
+    return std::make_optional<QFile>(path);
 }
 
 void ModelList::updateModelsFromJson()

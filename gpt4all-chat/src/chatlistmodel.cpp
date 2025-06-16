@@ -128,14 +128,18 @@ void ChatSaver::saveChats(const QVector<Chat *> &chats)
     QElapsedTimer timer;
     timer.start();
     const QString savePath = MySettings::globalInstance()->modelPath();
+    qDebug() << "Saving chats to path:" << savePath;
     qsizetype nSavedChats = 0;
     for (Chat *chat : chats) {
-        if (!chat->needsSave())
+        if (!chat->needsSave()) {
+            qDebug() << "Chat" << chat->id() << "doesn't need saving";
             continue;
+        }
         ++nSavedChats;
 
         QString fileName = "gpt4all-" + chat->id() + ".chat";
         QString filePath = savePath + "/" + fileName;
+        qDebug() << "Saving chat to file:" << filePath;
         QFile originalFile(filePath);
         QFile tempFile(filePath + ".tmp"); // Temporary file
 

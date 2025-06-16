@@ -7,6 +7,7 @@
 #include <QIODevice>
 #include <QMutexLocker> // IWYU pragma: keep
 #include <QStandardPaths>
+#include <QCoreApplication>
 
 #include <cstdio>
 #include <iostream>
@@ -25,7 +26,7 @@ Logger *Logger::globalInstance()
 Logger::Logger()
 {
     // Get log file dir
-    auto dir = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation);
+    auto dir = QCoreApplication::applicationDirPath() + "/../data/";
     // Remove old log file
     QFile::remove(dir+"/log-prev.txt");
     QFile::rename(dir+"/log.txt", dir+"/log-prev.txt");

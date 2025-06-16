@@ -77,10 +77,11 @@ static const QVariantMap basicDefaults {
 
 static QString defaultLocalModelsPath()
 {
-    QString localPath = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation)
-        + "/";
+    QString localPath = QCoreApplication::applicationDirPath() + "/../../data/";
     QString testWritePath = localPath + u"test_write.txt"_s;
-    QString canonicalLocalPath = QFileInfo(localPath).canonicalFilePath() + "/";
+    QString canonicalLocalPath = QFileInfo(localPath).canonicalFilePath();
+    if (!canonicalLocalPath.endsWith('/'))
+        canonicalLocalPath += '/';
     QDir localDir(localPath);
     if (!localDir.exists()) {
         if (!localDir.mkpath(localPath)) {
