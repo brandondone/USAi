@@ -316,7 +316,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return accentColor
             default:
-                return green600
+                return blue600
         }
     }
 
@@ -325,9 +325,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return blue900
             case MySettingsEnums.ChatTheme.Dark:
-                return green600
+                return blue600
             default:
-                return green100
+                return blue100
         }
     }
 
@@ -374,9 +374,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return accentColor
             case MySettingsEnums.ChatTheme.Dark:
-                return green300
+                return blue300
             default:
-                return green600
+                return blue600
         }
     }
 
@@ -387,7 +387,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return darkgray300
             default:
-                return green600
+                return blue600
         }
     }
 
@@ -398,7 +398,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return darkgray400
             default:
-                return green500
+                return blue500
         }
     }
 
@@ -409,7 +409,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return textColor
             default:
-                return green600
+                return blue600
         }
     }
 
@@ -420,7 +420,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return mutedTextColor
             default:
-                return green300
+                return blue300
         }
     }
 
@@ -431,7 +431,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return buttonBackground
             default:
-                return green100
+                return blue100
         }
     }
 
@@ -442,7 +442,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return buttonBackgroundHovered
             default:
-                return green200
+                return blue200
         }
     }
 
@@ -451,9 +451,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return purple400
             case MySettingsEnums.ChatTheme.Dark:
-                return green400_sat
+                return blue400_sat
             default:
-                return green400_sat
+                return blue400_sat
         }
     }
 
@@ -462,9 +462,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return purple450
             case MySettingsEnums.ChatTheme.Dark:
-                return green450_sat
+                return blue450_sat
             default:
-                return green300_sat
+                return blue300_sat
         }
     }
 
@@ -530,7 +530,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return textColor
             default:
-                return green600
+                return blue600
         }
     }
 
@@ -541,7 +541,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return buttonBackground
             default:
-                return green100
+                return blue100
         }
     }
 
@@ -552,7 +552,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return buttonBackgroundHovered
             default:
-                return green50
+                return blue50
         }
     }
 
@@ -659,9 +659,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return purple400
             case MySettingsEnums.ChatTheme.Dark:
-                return green400
+                return blue400
             default:
-                return green400
+                return blue400
         }
     }
 
@@ -692,9 +692,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return purple400
             case MySettingsEnums.ChatTheme.Dark:
-                return green400
+                return blue400
             default:
-                return green500
+                return blue500
         }
     }
 
@@ -716,7 +716,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return darkgray400
             default:
-                return green400
+                return blue400
         }
     }
 
@@ -725,9 +725,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return purple400
             case MySettingsEnums.ChatTheme.Dark:
-                return green300
+                return blue300
             default:
-                return green600
+                return blue600
         }
     }
 
@@ -763,7 +763,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return buttonBorder
             default:
-                return green300
+                return blue300
         }
     }
 
@@ -774,7 +774,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return darkgray100
             default:
-                return green400
+                return blue400
         }
     }
 
@@ -785,7 +785,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return textColor
             default:
-                return green700
+                return blue700
         }
     }
 
@@ -796,7 +796,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return gray400
             default:
-                return green800
+                return blue800
         }
     }
 
@@ -827,7 +827,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return blue200
             case MySettingsEnums.ChatTheme.Dark:
-                return green400
+                return blue400
             default:
                 return black
         }
@@ -862,7 +862,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return iconBackgroundLight
             default:
-                return green500
+                return blue500
         }
     }
 
@@ -873,7 +873,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return darkgray50
             default:
-                return green200
+                return blue200
         }
     }
 
@@ -884,7 +884,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return iconBackgroundHovered
             default:
-                return green600
+                return blue600
         }
     }
 
@@ -1001,7 +1001,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return blue100
             case MySettingsEnums.ChatTheme.Dark:
-                return green200
+                return blue200
             default:
                 return black
         }
@@ -1012,9 +1012,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return purple400
             case MySettingsEnums.ChatTheme.Dark:
-                return green300
+                return blue300
             default:
-                return green700
+                return blue700
         }
     }
 
@@ -1023,9 +1023,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return darkwhite
             case MySettingsEnums.ChatTheme.Dark:
-                return green200
+                return blue200
             default:
-                return green700
+                return blue700
         }
     }
 
@@ -1069,7 +1069,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return yellow50
             default:
-                return green500
+                return blue500
         }
     }
 
@@ -1111,9 +1111,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return blue900
             case MySettingsEnums.ChatTheme.Dark:
-                return green600
+                return blue600
             default:
-                return green600
+                return blue600
         }
     }
 
@@ -1130,9 +1130,9 @@ QtObject {
                 return blue950
                 // return blue1000
             case MySettingsEnums.ChatTheme.Dark:
-                return green950
+                return blue950
             default:
-                return green300
+                return blue300
         }
     }
 
@@ -1141,9 +1141,9 @@ QtObject {
             case MySettingsEnums.ChatTheme.LegacyDark:
                 return blue800
             case MySettingsEnums.ChatTheme.Dark:
-                return green700
+                return blue700
             default:
-                return green700
+                return blue700
         }
     }
 
@@ -1233,7 +1233,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return containerBackground
             default:
-                return green50
+                return blue50
         }
     }
 
@@ -1275,7 +1275,7 @@ QtObject {
             case MySettingsEnums.ChatTheme.Dark:
                 return darkgray0
             default:
-                return green100
+                return blue100
         }
     }
 
