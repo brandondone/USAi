@@ -8,6 +8,9 @@
 #include <QMutexLocker> // IWYU pragma: keep
 #include <QStandardPaths>
 #include <QCoreApplication>
+#include <QSettings>
+#include <QFileInfo>
+#include <QDir>
 
 #include <cstdio>
 #include <iostream>
@@ -25,8 +28,11 @@ Logger *Logger::globalInstance()
 
 Logger::Logger()
 {
-    // Get log file dir
-    auto dir = QCoreApplication::applicationDirPath() + "/../data/";
+    // Get log file dir from settings path
+    auto dir = QSettings().fileName();
+    dir = QFileInfo(dir).path();
+    // Create logs directory if it doesn't exist
+    QDir().mkpath(dir);
     // Remove old log file
     QFile::remove(dir+"/log-prev.txt");
     QFile::rename(dir+"/log.txt", dir+"/log-prev.txt");
