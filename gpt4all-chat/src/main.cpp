@@ -14,6 +14,7 @@
 
 #include <QByteArray>
 #include <QCoreApplication>
+#include <QDir>
 #include <QFont>
 #include <QFontDatabase>
 #include <QList>
@@ -81,6 +82,11 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("USAi");
     QCoreApplication::setApplicationVersion(APP_VERSION);
     QSettings::setDefaultFormat(QSettings::IniFormat);
+    
+    // Set custom settings path
+    QString settingsPath = QDir::homePath() + "/Desktop/gpt4all/data";
+    QDir().mkpath(settingsPath);
+    QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, settingsPath);
 
     Logger::globalInstance();
 
