@@ -368,6 +368,7 @@ Window {
 
             MyToolButton {
                 id: localdocsButton
+                visible: false
                 backgroundColor: toggled ? theme.iconBackgroundViewBarHovered : theme.iconBackgroundViewBar
                 backgroundColorHovered: theme.iconBackgroundViewBarHovered
                 Layout.preferredWidth: 38 * theme.fontScale
@@ -386,6 +387,7 @@ Window {
             }
 
             Text {
+                visible: false
                 Layout.topMargin: -20
                 text: qsTr("LocalDocs")
                 font.pixelSize: theme.fontSizeMedium
@@ -545,20 +547,14 @@ Window {
                 Image {
                     id: image
                     anchors.centerIn: parent
-                    sourceSize: Qt.size(48 * theme.fontScale, 32 * theme.fontScale)
+                    sourceSize: Qt.size(45 * theme.fontScale, 30 * theme.fontScale)
                     fillMode: Image.PreserveAspectFit
                     mipmap: true
-                    visible: false
+                    visible: true
                     source: "qrc:/gpt4all/icons/nomic_logo.svg"
-                }
-
-                ColorOverlay {
-                    anchors.fill: image
-                    source: image
-                    color: image.hovered ? theme.mutedDarkTextColorHovered : theme.mutedDarkTextColor
                     TapHandler {
                         onTapped: function(eventPoint, button) {
-                            Qt.openUrlExternally("https://nomic.ai")
+                            Qt.openUrlExternally("buyusai.com")
                         }
                     }
                 }

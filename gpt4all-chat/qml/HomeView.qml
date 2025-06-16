@@ -79,7 +79,7 @@ Rectangle {
                     Layout.maximumWidth: 150 + 200 * theme.fontScale
                     Layout.preferredHeight: 40 + 90 * theme.fontScale
                     text: qsTr("Start Chatting")
-                    description: qsTr("Chat with any LLM")
+                    description: qsTr("Chat with the AI")
                     imageSource: "qrc:/gpt4all/icons/chat.svg"
                     onClicked: {
                         chatViewRequested()
@@ -90,6 +90,7 @@ Rectangle {
                     Layout.maximumWidth: 150 + 200 * theme.fontScale
                     Layout.preferredHeight: 40 + 90 * theme.fontScale
                     text: qsTr("LocalDocs")
+                    visible: false
                     description: qsTr("Chat with your local files")
                     imageSource: "qrc:/gpt4all/icons/db.svg"
                     onClicked: {
@@ -101,6 +102,7 @@ Rectangle {
                     Layout.maximumWidth: 150 + 200 * theme.fontScale
                     Layout.preferredHeight: 40 + 90 * theme.fontScale
                     text: qsTr("Find Models")
+                    visible: false
                     description: qsTr("Explore and download models")
                     imageSource: "qrc:/gpt4all/icons/models.svg"
                     onClicked: {
@@ -254,9 +256,9 @@ Rectangle {
                     spacing: 40
 
                     MyFancyLink {
-                        text: qsTr("nomic.ai")
+                        text: qsTr("Aelus Institute")
                         imageSource: "qrc:/gpt4all/icons/globe.svg"
-                        onClicked: { Qt.openUrlExternally("https://www.nomic.ai/gpt4all") }
+                        onClicked: { Qt.openUrlExternally("aelus.org") }
                         rightPadding: 15
                     }
                 }
@@ -265,6 +267,7 @@ Rectangle {
     }
 
     Rectangle {
+        visible: false
         anchors.top: mainArea.top
         anchors.right: mainArea.right
         border.width: 1

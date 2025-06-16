@@ -501,6 +501,7 @@ Rectangle {
 
                     MyButton {
                         id: collectionsButton
+                        visible: false
                         clip: true
                         anchors.right: parent.right
                         borderWidth: 0
@@ -563,6 +564,7 @@ Rectangle {
                             }
 
                             Text {
+                                visible: false
                                 text: qsTr("LocalDocs")
                                 color: theme.collectionsButtonForeground
                                 font.pixelSize: theme.fontSizeLarge
