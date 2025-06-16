@@ -332,3 +332,31 @@ void ChatListModel::handleServerEnabledChanged()
     Q_ASSERT(nextChat && nextChat != m_serverChat);
     setCurrentChat(nextChat);
 }
+
+Q_INVOKABLE void ChatListModel::addChat()
+{
+    // Select the existing new chat if we already have one
+    if (m_newChat) {
+        setCurrentChat(m_newChat);
+        return;
+    }
+
+    // Create a new chat pointer and connect it to determine when it is populated
+    m_newChat = new Chat(this);
+    connect(m_newChat->chatModel(), &ChatModel::countChanged,
+        this, &ChatListModel::newChatCountChanged);
+    connect(m_newChat, &Chat::nameChanged,
+        this, &ChatListModel::nameChanged);
+
+    // Set the default model immediately
+    const auto defaultModel = ModelList::globalInstance()->defaultModelInfo();
+    if (!defaultModel.id().isEmpty()) {
+        m_newChat->setModelInfo(defaultModel);
+    }
+
+    beginInsertRows(QModelIndex(), 0, 0);
+    m_chats.prepend(m_newChat);
+    endInsertRows();
+    emit countChanged();
+    setCurrentChat(m_newChat);
+}
