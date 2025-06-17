@@ -559,11 +559,6 @@ Window {
                     mipmap: true
                     visible: true
                     source: "qrc:/gpt4all/icons/nomic_logo.svg"
-                    TapHandler {
-                        onTapped: function(eventPoint, button) {
-                            Qt.openUrlExternally("buyusai.com")
-                        }
-                    }
                 }
             }
         }
