@@ -31,6 +31,7 @@
 #include <Qt>
 #include <QtAssert>
 #include <QtSystemDetection>
+#include <QDebug>
 
 #if G4A_CONFIG(force_d3d12)
 #   include <QSGRendererInterface>
@@ -83,14 +84,37 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationVersion(APP_VERSION);
     QSettings::setDefaultFormat(QSettings::IniFormat);
     
-    // Set custom settings path
-    QString settingsPath = QDir::homePath() + "/Desktop/gpt4all/data";
-    QDir().mkpath(settingsPath);
-    QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, settingsPath);
+    SingleApplication app(argc, argv, true /*allowSecondary*/);
+    
+    // Print the application directory and executable file path for debugging
+    qDebug() << "Executable path:" << QCoreApplication::applicationFilePath();
+    qDebug() << "Application dir path:" << QCoreApplication::applicationDirPath();
+
+    // Set custom settings path to be next to the .app bundle (USB portable)
+    QDir appDir(QCoreApplication::applicationDirPath());
+    // Go up three directories: MacOS -> Contents -> USAi.app
+    appDir.cdUp(); // Contents
+    appDir.cdUp(); // USAi.app
+    appDir.cdUp(); // parent of .app
+    QString settingsPath = appDir.absolutePath() + "/data";
+    qDebug() << "Settings path:" << settingsPath;
+    if (!QDir().mkpath(settingsPath)) {
+        qDebug() << "Failed to create settings directory:" << settingsPath;
+    }
+    QString settingsDir = settingsPath + "/buyusai.com";
+    if (!QDir().mkpath(settingsDir)) {
+        qDebug() << "Failed to create settings subdirectory:" << settingsDir;
+    }
+    QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, settingsDir);
+
+    // Ensure model path is set in settings
+    QSettings settings;
+    if (!settings.contains("modelPath")) {
+        settings.setValue("modelPath", settingsPath);
+    }
 
     Logger::globalInstance();
 
-    SingleApplication app(argc, argv, true /*allowSecondary*/);
     if (app.isSecondary()) {
 #ifdef Q_OS_WINDOWS
         AllowSetForegroundWindow(DWORD(app.primaryPid()));
