@@ -104,6 +104,10 @@ Window {
     property var currentChat: ChatListModel.currentChat
 
     function startupDialogs() {
+        // Set network features and usage stats to false by default
+        MySettings.networkIsActive = false;
+        MySettings.networkUsageStatsActive = false;
+
         if (!LLM.compatHardware()) {
             Network.trackEvent("noncompat_hardware")
             errorCompatHardware.open();
@@ -120,8 +124,9 @@ Window {
         // check for first time start of this version
         if (!hasCheckedFirstStart) {
             if (Download.isFirstStart(/*writeVersion*/ true)) {
-                firstStartDialog.open();
-                return;
+                // Skip first start dialog since we've already set network features to false
+                // firstStartDialog.open();
+                // return;
             }
 
             // send startup or opt-out now that the user has made their choice
@@ -132,11 +137,11 @@ Window {
             hasCheckedFirstStart = true
         }
 
-        // check for new version
-        if (Download.hasNewerRelease && !firstStartDialog.opened) {
-            newVersionDialog.open();
-            return;
-        }
+        // Skip update check
+        // if (Download.hasNewerRelease && !firstStartDialog.opened) {
+        //     newVersionDialog.open();
+        //     return;
+        // }
     }
 
     PopupDialog {
