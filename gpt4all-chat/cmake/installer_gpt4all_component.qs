@@ -36,15 +36,6 @@ Component.prototype.createOperations = function() {
             component.addOperation("Execute", "rm", "-f", symlinkPath);
             // Create the symlink
             component.addOperation("Execute", "ln", "-s", usaiAppPath, symlinkPath);
-        
-            var homeDir = installer.environmentVariable("HOME");
-            if (!installer.fileExists(homeDir + "/Desktop/USAi.desktop")) {
-                component.addOperation("CreateDesktopEntry",
-                    homeDir + "/Desktop/USAi.desktop",
-                    "Type=Application\nTerminal=false\nExec=\"" + targetDirectory +
-                    "/bin/chat\"\nName=USAi\nIcon=" + targetDirectory +
-                    "/USAi-48.png\nName[en_US]=USAi");
-            }
         } else { // linux
             var homeDir = installer.environmentVariable("HOME");
             if (!installer.fileExists(homeDir + "/Desktop/USAi.desktop")) {
