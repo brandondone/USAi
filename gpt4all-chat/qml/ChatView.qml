@@ -1247,7 +1247,7 @@ Rectangle {
                                     textInput.forceActiveFocus();
                             }
                             font.pixelSize: theme.fontSizeLarger
-                            placeholderText: currentChat.isModelLoaded ? qsTr("Send a message...") : qsTr("Load a model to continue...")
+                            placeholderText: currentChat.isModelLoaded ? qsTr("Send a message...") : qsTr("Please wait a moment for the model to load...")
                             Accessible.role: Accessible.EditableText
                             Accessible.name: placeholderText
                             Accessible.description: qsTr("Send messages/prompts to the model")
